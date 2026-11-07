@@ -1,0 +1,35 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{db}/documents {
+    // Admin = document at admins/{uid}, created only in the Firebase console / Admin SDK.
+    function isAdmin() { return request.auth != null && exists(/databases/$(db)/documents/admins/$(request.auth.uid)); }
+    function str(v, max) { return v is string && v.size() <= max; }
+
+    match /admins/{uid} {
+      allow get: if request.auth != null && request.auth.uid == uid;
+      allow list, write: if false;
+    }
+    match /settings/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /gallery/{id} {
+      allow read: if resource.data.isPublished == true || isAdmin();
+      allow create, update: if isAdmin() && str(request.resource.data.title, 120) && str(request.resource.data.imageUrl, 600)
+                            && request.resource.data.isPublished is bool;
+      allow delete: if isAdmin();
+    }
+    match /requests/{id} {
+      allow create: if str(request.resource.data.fullName, 100) && request.resource.data.fullName.size() > 0
+                    && str(request.resource.data.contactInfo, 150) && request.resource.data.contactInfo.size() > 0
+                    && request.resource.data.requestType in ['Custom design','Styling','Collaboration','Consultation','Other']
+                    && str(request.resource.data.description, 2000) && request.resource.data.description.size() >= 10
+                    && str(request.resource.data.attachmentUrl, 600)
+                    && request.resource.data.status == 'Pending' && request.resource.data.adminNotes == ''
+                    && request.resource.data.createdAt == request.time && request.resource.data.updatedAt == request.time
+                    && request.resource.data.keys().hasOnly(['fullName','contactInfo','requestType','description','attachmentUrl','status','adminNotes','createdAt','updatedAt']);
+      allow read, delete: if isAdmin();
+      allow update: if isAdmin() && request.resource.data.status in ['Pending','Approved','Rejected'] && str(request.resource.data.adminNotes, 2000);
+    }
+  }
+}

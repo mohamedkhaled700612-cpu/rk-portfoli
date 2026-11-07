@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>RK FASHION — Admin</title>
+<link rel="icon" href="assets/icons/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/admin.css"><link rel="stylesheet" href="css/responsive.css">
+</head><body class="admin">
+<section id="loginView" class="login" hidden>
+  <form id="loginForm"><img src="assets/logo/rk.svg" alt="" width="80"><h1>Admin</h1>
+    <label class="field">Email<input type="email" name="email" autocomplete="username" required></label>
+    <label class="field">Password<input type="password" name="password" autocomplete="current-password" required></label>
+    <button class="btn" type="submit">Sign in</button><p id="loginErr" class="err-msg" role="alert"></p><p><a href="index.html">Back to the website</a></p></form>
+</section>
+<div id="app" hidden>
+  <header class="bar"><b>RK FASHION · Admin</b>
+    <nav id="tabs"><button data-t="overview" class="on">Overview</button><button data-t="requests">Requests</button><button data-t="gallery">Gallery</button><button data-t="site">Site content</button></nav>
+    <span><a href="index.html">View site</a> <button id="logout" class="btn ghost sm">Log out</button></span></header>
+  <main class="panel">
+    <section id="t-overview"><h2>Overview</h2><div id="stats" class="stats"></div></section>
+    <section id="t-requests" hidden><h2>Requests</h2>
+      <div class="tools"><input id="q" placeholder="Search name, contact or text" aria-label="Search requests"><select id="sf" aria-label="Filter by status"><option value="">All statuses</option><option>Pending</option><option>Approved</option><option>Rejected</option></select></div>
+      <div id="reqList"></div></section>
+    <section id="t-gallery" hidden><h2>Gallery</h2>
+      <form id="imgForm" class="box"><h3 id="imgHead">Add an image</h3><input type="hidden" name="id">
+        <label class="field">Image<input type="file" name="file" accept="image/jpeg,image/png,image/webp,image/avif"></label>
+        <label class="field">Title<input name="title" required maxlength="120"></label>
+        <label class="field">Category<input name="category" list="cats" maxlength="60"><datalist id="cats"></datalist></label>
+        <label class="field">Description<textarea name="description" rows="2" maxlength="500"></textarea></label>
+        <label class="chk"><input type="checkbox" name="isPublished" checked> Published</label>
+        <button class="btn" type="submit">Save image</button> <button class="btn ghost" type="button" id="imgCancel" hidden>Cancel edit</button></form>
+      <div id="imgList" class="agrid"></div></section>
+    <section id="t-site" hidden><h2>Site content</h2>
+      <form id="siteForm" class="box">
+        <label class="field">Hero introduction<input name="intro" maxlength="200"></label>
+        <label class="field">Biography<textarea name="bio" rows="5"></textarea></label>
+        <label class="field">Education (one per line)<textarea name="education" rows="3"></textarea></label>
+        <label class="field">Experience (one per line)<textarea name="experience" rows="3"></textarea></label>
+        <label class="field">Skills (one per line)<textarea name="skills" rows="3"></textarea></label>
+        <label class="field">Achievements and certificates (one per line)<textarea name="achievements" rows="3"></textarea></label>
+        <label class="field">Profile photo<input type="file" name="photo" accept="image/jpeg,image/png,image/webp,image/avif"></label>
+        <label class="field">CV (PDF)<input type="file" name="cv" accept="application/pdf"></label><p id="cvNow" class="muted"></p>
+        <label class="field">Email<input type="email" name="email"></label>
+        <label class="field">Phone<input name="phone"></label>
+        <label class="field">WhatsApp number (with country code)<input name="whatsapp"></label>
+        <label class="field">Instagram URL<input type="url" name="instagram"></label>
+        <label class="field">Other links (one per line, as Name | https://…)<textarea name="otherLinks" rows="3"></textarea></label>
+        <button class="btn" type="submit">Save site content</button></form></section>
+  </main>
+</div>
+<div id="toasts" class="toasts" aria-live="polite"></div>
+<script type="module" src="js/admin.js"></script></body></html>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RK FASHION — Raghad Khaled</title>
+<meta name="description" content="Portfolio of Raghad Khaled, RK FASHION. View the work and send a request.">
+<link rel="icon" href="assets/icons/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Yellowtail&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="#top" aria-label="RK FASHION home"><img src="assets/logo/rk.svg" alt="" width="40" height="40"><span>RK FASHION</span></a>
+  <button id="menuBtn" class="menu" aria-expanded="false" aria-controls="nav" aria-label="Menu"><i></i><i></i></button>
+  <nav id="nav" aria-label="Main"><a href="#about">About</a><a href="#portfolio">Portfolio</a><a href="#request">Request</a><a href="#contact">Contact</a></nav>
+</header>
+<main id="top">
+
+<section class="hero">
+  <h1 class="big">Portfolio</h1>
+  <p class="script">Raghad Khaled</p>
+  <figure class="idcard"><i class="tape"></i><img class="ph" src="assets/logo/rk.svg" alt="Raghad Khaled"><figcaption><b>RAGHAD KHALED</b><small>RK FASHION</small></figcaption></figure>
+  <p id="heroIntro" class="lead"></p>
+  <div class="cta"><a class="btn" href="#portfolio">View Portfolio</a><a class="btn ghost" href="#request">Send a Request</a><a class="btn ghost" href="#contact">Contact Me</a></div>
+</section>
+
+<section id="about" class="light meet">
+  <div class="wrap">
+    <h2 class="big">Meet the</h2><p class="script dark">designer</p>
+    <div class="meetgrid">
+      <div class="arch"><img class="ph" src="assets/logo/rk.svg" alt="Raghad Khaled"><i class="star s1"></i><i class="star s2"></i></div>
+      <div><p id="bio" class="bio"></p><a id="cvLink" class="btn dark" href="#" target="_blank" rel="noopener" hidden>Download CV</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="wine">
+  <div class="wrap">
+    <div class="notebook reveal">
+      <h2 class="big">Hello</h2>
+      <div class="cols">
+        <div><h3>Education</h3><ul id="education"></ul></div>
+        <div><h3>Experience</h3><ul id="experience"></ul></div>
+        <div><h3>Skills</h3><ul id="skills"></ul></div>
+        <div><h3>Achievements &amp; certificates</h3><ul id="achievements"></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio" class="wrap reveal">
+  <h2 class="big">Selected <span class="script inl">work</span></h2>
+  <div id="filters" class="filters" role="group" aria-label="Filter by category"></div>
+  <div id="grid" class="grid"><p class="muted">Loading the collection…</p></div>
+</section>
+
+<section id="request" class="light">
+  <div class="wrap narrow reveal">
+    <h2 class="big">Send a <span class="script inl dark">request</span></h2>
+    <p>Tell me what you have in mind. Every request is read personally.</p>
+    <form id="reqForm" novalidate>
+      <label class="field">Full name<input name="fullName" maxlength="100" autocomplete="name"><em>Enter your full name.</em></label>
+      <label class="field">Email or phone<input name="contactInfo" maxlength="150"><em>Enter a way to reach you.</em></label>
+      <label class="field">Request type<select name="requestType"><option value="">Choose one</option><option>Custom design</option><option>Styling</option><option>Collaboration</option><option>Consultation</option><option>Other</option></select><em>Choose a request type.</em></label>
+      <label class="field">Details<textarea name="description" rows="5" maxlength="2000"></textarea><em>Describe your request in at least 10 characters.</em></label>
+      <label class="field">Attachment (optional, up to 5 MB)<input type="file" name="attachment" accept="image/jpeg,image/png,image/webp,image/avif,application/pdf"></label>
+      <button class="btn dark" type="submit">Send request</button>
+    </form>
+    <div id="reqDone" class="done" hidden><img src="assets/logo/rk.svg" alt="" width="64"><h3>Thank you</h3><p>Your request was received and is marked Pending. You will be contacted using the details you gave.</p><button id="again" class="btn dark" type="button">Send another request</button></div>
+  </div>
+</section>
+
+<section id="contact" class="wine">
+  <div class="wrap">
+    <h2 class="big">Social <span class="script inl">media</span></h2>
+    <div class="tv reveal"><i class="ant a1"></i><i class="ant a2"></i>
+      <div class="screen"><ul id="contactList" class="contact"></ul></div><div class="knobs"><i></i><i></i></div></div>
+  </div>
+</section>
+</main>
+<footer class="light thanks"><p class="big">Thank</p><p class="script dark">you</p><small>© <span id="y"></span> Raghad Khaled — RK FASHION</small></footer>
+
+<div id="lb" class="lb" hidden role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button id="lbClose" aria-label="Close">×</button><button id="lbPrev" aria-label="Previous">‹</button>
+  <figure><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure><button id="lbNext" aria-label="Next">›</button>
+</div>
+<div id="toasts" class="toasts" aria-live="polite"></div>
+<script>document.getElementById("y").textContent=new Date().getFullYear()</script>
+<script type="module" src="js/main.js"></script>
+</body></html>
